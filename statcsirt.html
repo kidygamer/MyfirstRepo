@@ -15,13 +15,57 @@
 	<link href="jqvmap/jqvmap.css" media="screen" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="jqvmap/jquery.vmap.js"></script>
-    <script type="text/javascript" src="jqvmap/maps/jquery.vmap.world.js" charset="utf-8"></script>
+    <script type="text/javascript" src="jqvmap/maps/jquery.vmap.indonesia.js" charset="utf-8"></script>
 
-    <script type="text/javascript">
-    jQuery(document).ready(function() {
-      jQuery('#vmap').vectorMap({ map: 'world_en' });
-    });
-    </script>
+    <script>
+		jQuery(document).ready(function () {
+		  jQuery('#vmap').vectorMap({
+			map: 'indonesia_id',
+			enableZoom: true,
+			showTooltip: true,
+			selectedColor: null,
+			// backgroundColor: '#a5bfdd',
+			// borderColor: '#818181',
+			// borderOpacity: 0.25,
+			// borderWidth: 1,
+			// color: '#f4f3f0',
+			// enableZoom: true,
+			// hoverColor: '#c9dfaf',
+			// hoverOpacity: null,
+			// normalizeFunction: 'linear',
+			// scaleColors: ['#b6d6ff', '#005ace'],
+			// selectedColor: '#c9dfaf',
+			// selectedRegions: null,
+			// showTooltip: true,
+			onLabelShow: function(event, label, code)
+			{
+				// if(sample_data[code] > 0)
+					var tegar = "tegar";
+					var jlh_vaksi = tegar;
+					var jlh_mati = 12;
+					label.append("++<br> Vaksin :"+tegar+"orang <br> Mati : "+jlh_mati); 
+				
+			},
+			// onRegionOver: function(event, code, region){
+				
+			// },
+			onRegionClick: function(event, code, region){
+				// var base_url = window.location.origin;
+				// window.location.href =base_url+'/newwindow.html';
+				// console.log(region);
+				if(region == 'Aceh'){
+					window.location.href ='./newwindow.html';
+				}else{
+					window.location.href ='./newwindow2.html';
+				}
+
+				// applikaswindaka.com/?=jawabarat.html
+
+			}
+			
+		  });
+		});
+	  </script>
 	
 </head>
 <body>
@@ -112,10 +156,12 @@
 
 <section class="section-um">
 <div class="container">
-	<div class="col-md-4">
+	<div class="row section-um-content">
+	<div class="col-md-12">
 		<div class="canvas1">
-			<div id="vmap" style="width: 600px; height: 400px;"></div>
+			<div id="vmap" style="height: 400px;"></div>
 		</div>
+	</div>
 	</div>
 </div>
 </section>
